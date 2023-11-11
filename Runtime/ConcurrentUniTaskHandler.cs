@@ -4,13 +4,13 @@ using Cysharp.Threading.Tasks;
 
 namespace TanitakaTech.ConcurrentUniTaskHandler
 {
-    public readonly ref struct ConcurrentUniTaskHandler<TResult>
+    public readonly struct ConcurrentUniTaskHandler<TResult>
     {
-        private Span<ProcessTask<TResult>> ProcessTasks { get; }
+        private Memory<ProcessTask<TResult>> ProcessTasks { get; }
         
         internal ConcurrentUniTaskHandler(params ProcessTask<TResult>[] processTasks)
         {
-            ProcessTasks = new Span<ProcessTask<TResult>>(processTasks);
+            ProcessTasks = new Memory<ProcessTask<TResult>>(processTasks);
         }
 
         public async UniTask<TResult> ProcessFirstCompletedTaskAsync(CancellationToken cancellationToken = default)
@@ -20,12 +20,12 @@ namespace TanitakaTech.ConcurrentUniTaskHandler
             UniTask[] tasks = new UniTask[ProcessTasks.Length];
             for (int i = 0; i < ProcessTasks.Length; i++)
             {
-                tasks[i] = ProcessTasks[i].WaitTask(cancellationTokenSource.Token);
+                tasks[i] = ProcessTasks.Span[i].WaitTask(cancellationTokenSource.Token);
             }
 
             var passedTaskIndex = await UniTask.WhenAny(tasks);
             cancellationTokenSource.Cancel();
-            return await ProcessTasks[passedTaskIndex].OnPassedTask(cancellationToken);
+            return await ProcessTasks.Span[passedTaskIndex].OnPassedTask(cancellationToken);
         }
 
         public async UniTask<TResult> LoopProcessFirstCompletedTaskAsync(Func<TResult, bool> checkNeedLoop, CancellationToken cancellationToken = default)
