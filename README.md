@@ -42,16 +42,16 @@ var result = await ConcurrentUniTaskHandler.Create(
 
 ## Installation
 
-### Install via OpenUPM
-```sh
-openupm add com.tanitaka-tech.concurrent-unitask-handler
-```
-
 ### Install via git URL
 1. Open the Package Manager
 1. Press [＋▼] button and click Add package from git URL...
 1. Enter the following:
-    - https://github.com/tanitaka-tech/Concurrent-UniTask-Handler.git#upm
+    - https://github.com/tanitaka-tech/Concurrent-UniTask-Handler.git
+
+### ~~Install via OpenUPM~~ (not yet)
+```sh
+openupm add com.tanitaka-tech.concurrent-unitask-handler
+```
 
 ## Requirement
 - [UniTask](https://github.com/Cysharp/UniTask)
