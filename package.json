@@ -1,7 +1,7 @@
 {
     "name": "com.tanitaka-tech.concurrent-unitask-handler",
     "displayName": "Concurrent UniTask Handler",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "unity": "2022.3",
     "author": "tanitaka-tech",
     "description": "Provides a module for handling each sequence separately while executing UniTask in parallel.",
@@ -9,6 +9,6 @@
     "license": "MIT",
     "category": "Task",
     "dependencies": {
-        "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+        "com.cysharp.unitask": "2.5.0"
     }
 }
