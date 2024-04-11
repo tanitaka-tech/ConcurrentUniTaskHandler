@@ -46,7 +46,7 @@ var result = await ConcurrentUniTaskHandler.Create(
 1. Open the Package Manager
 1. Press [＋▼] button and click Add package from git URL...
 1. Enter the following:
-    - https://github.com/tanitaka-tech/Concurrent-UniTask-Handler.git
+    - https://github.com/tanitaka-tech/ConcurrentUniTaskHandler.git
 
 ### ~~Install via OpenUPM~~ (not yet)
 ```sh
