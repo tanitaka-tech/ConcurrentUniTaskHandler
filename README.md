@@ -1,3 +1,6 @@
+⚠️ this library is obsolete.
+please use https://github.com/tanitaka-tech/UnityProcessManager
+
 # Concurrent UniTask Handler
 
 Provides a module for handling each sequence separately while executing UniTask in parallel.
